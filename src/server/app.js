@@ -7,7 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var flash = require('connect-flash');
-var passport = require('./lib/auth');
+// var passport = require('./lib/auth');
 
 // *** routes *** //
 var routes = require('./routes/index.js');
@@ -29,14 +29,15 @@ app.use(session({
   saveUninitialized: true
 }));
 app.use(flash());
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 app.use(express.static(path.join(__dirname, '../client')));
 
 
 // *** main routes *** //
 app.get('/', function(req, res, next) {
-  res.sendFile(path.join(__dirname, '../client/', 'index.html'));
+  console.log('hello');
+  res.sendFile(path.join(__dirname, '../client', 'index.html'));
 });
 app.use('/', routes);
 
